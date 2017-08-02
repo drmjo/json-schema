@@ -1,0 +1,14 @@
+version: '3'
+services:
+  node:
+    image: node-schema:latest
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    environment:
+      - NODE_HTTP_PORT=${NODE_HTTP_PORT}
+    ports:
+      - 127.0.0.1:${HOST_HTTP_PORT}:${NODE_HTTP_PORT}
+    volumes:
+      - ./:/usr/src/app
+    tty: true

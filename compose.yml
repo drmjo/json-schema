@@ -1,0 +1,16 @@
+version: '3'
+services:
+  node:
+    image: node-schema:prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env
+    ports:
+      - 8833:4555
+    deploy:
+      mode: replicated
+      replicas: 20
+      restart_policy:
+        condition: any
